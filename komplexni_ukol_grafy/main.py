@@ -11,7 +11,7 @@ class GrafickaAplikace:
         self.root.title("Graf funkce")
         self.root.bind("<Escape>", self.zavri_aplikaci)
         
-        # Hlavní rámce
+        # main frame
         self.frame_funkce = tk.LabelFrame(root, text="Generuj graf funkce")
         self.frame_funkce.pack(padx=10, pady=5, fill=tk.X)
 
@@ -21,7 +21,7 @@ class GrafickaAplikace:
         self.frame_popisky = tk.LabelFrame(root, text="Popisky os")
         self.frame_popisky.pack(padx=10, pady=5, fill=tk.X)
 
-        # Výběr funkce
+        # fukce vyber
         self.funkce_var = tk.StringVar(value="sin")
         self.radio_sin = tk.Radiobutton(self.frame_funkce, text="sin", variable=self.funkce_var, value="sin")
         self.radio_sin.pack(anchor=tk.W)
@@ -30,7 +30,7 @@ class GrafickaAplikace:
         self.radio_exp = tk.Radiobutton(self.frame_funkce, text="exp", variable=self.funkce_var, value="exp")
         self.radio_exp.pack(anchor=tk.W)
         
-        # Popisky pro minimální a maximální hodnotu
+        # max a min hodnoty
         self.od_label = tk.Label(self.frame_funkce, text="Od:")
         self.od_label.pack(side=tk.LEFT, padx=5, pady=2)
         self.min_entry = tk.Entry(self.frame_funkce, width=10)
@@ -44,7 +44,7 @@ class GrafickaAplikace:
         self.generuj_button = tk.Button(self.frame_funkce, text="Vytvoř graf", command=self.generuj_graf)
         self.generuj_button.pack(side=tk.RIGHT, padx=5, pady=2)
 
-        # Výběr souboru
+        # nahrani ze souboru
         self.soubor_entry = tk.Entry(self.frame_soubor, width=30)
         self.soubor_entry.pack(side=tk.LEFT, padx=5, pady=2)
         
@@ -54,7 +54,7 @@ class GrafickaAplikace:
         self.generuj_soubor_button = tk.Button(self.frame_soubor, text="Vytvoř graf", command=self.fceSoubor)
         self.generuj_soubor_button.pack(side=tk.RIGHT, padx=5, pady=2)
 
-        # Popisky os
+        # osy
         self.x_label = tk.Label(self.frame_popisky, text="osa X")
         self.x_label.pack(side=tk.LEFT, padx=5, pady=2)
         self.x_entry = tk.Entry(self.frame_popisky, width=15)
@@ -65,12 +65,12 @@ class GrafickaAplikace:
         self.y_entry = tk.Entry(self.frame_popisky, width=15)
         self.y_entry.pack(side=tk.LEFT, padx=5, pady=2)
 
-        # Uchování cesty k souboru
+        # cesta k souboru
         self.souborVar = tk.StringVar()
 
     def generuj_graf(self):
         try:
-            # Zkontrolujte, zda jsou pole pro 'Od' a 'Do' vyplněna
+            # je od do vyplneno?
             if not self.min_entry.get() or not self.max_entry.get():
                 raise ValueError("Hodnoty od do nemohou být prázdné!")
             
